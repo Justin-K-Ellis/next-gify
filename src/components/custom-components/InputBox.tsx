@@ -6,14 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
-// import useAPI from "@/hooks/useAPI";
-
-export default function InputBox({
-  imgUrl,
-  setImgUrl,
-  //   imageInfo,
-  //   setImageInfo,
-}) {
+export default function InputBox({ imgUrl, setImgUrl }) {
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
   const URL = `https://api.giphy.com/v1/gifs/translate?api_key=${apiKey}&s=`;
 

@@ -1,5 +1,10 @@
+// React imports
+import { useState, useEffect } from "react";
+
+// Next imports
 import Image from "next/image";
 
+// shadcn imports
 import { Badge } from "../ui/badge";
 import {
   Card,
@@ -10,14 +15,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { useState, useEffect } from "react";
+// Custom imports
 import { ImageInfo } from "@/lib/types";
 
-// import useAPI from "@/hooks/useAPI";
-
 export default function GifCard({ imgUrl }) {
-  // const { imageInfo, isError, isLoading } = useAPI(imgUrl);
-
   const [imageInfo, setImageInfo] = useState<ImageInfo>({
     url: "",
     title: "",
@@ -77,7 +78,6 @@ export default function GifCard({ imgUrl }) {
           alt={imageInfo.alt}
         />
       </CardContent>
-      {/* <CardFooter>{imageInfo.url}</CardFooter> */}
     </Card>
   );
 }
