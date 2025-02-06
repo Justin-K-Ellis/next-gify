@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ImageInfo } from "@/lib/types";
 
-function useAPI(url) {
+function useAPI(url: string) {
   const [imageInfo, setImageInfo] = useState<ImageInfo>({
     url: "",
     title: "",
@@ -10,12 +10,14 @@ function useAPI(url) {
     alt: "",
   });
   const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchGif() {
       try {
         const response = await fetch(url);
-        const responseData = response.json();
+        const responseData = await response.json();
+        console.log(responseData);
         setImageInfo({
           url: responseData.data.images.original.url,
           title: responseData.data.title,
@@ -23,13 +25,16 @@ function useAPI(url) {
           width: responseData.data.images.original.width,
           alt: responseData.data.title,
         });
+        setIsLoading(false);
       } catch (error) {
         console.log(`An error occured when fetching the gif: ${error}`);
         setIsError(true);
       }
     }
     fetchGif();
-  }, []);
+  }, [url]);
 
-  return { imageInfo, isError };
+  return { imageInfo, isError, isLoading };
 }
+
+export default useAPI;

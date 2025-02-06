@@ -6,15 +6,20 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
-export default function InputBox({ imgUrl, setImgUrl }) {
+// import useAPI from "@/hooks/useAPI";
+
+export default function InputBox({
+  imgUrl,
+  setImgUrl,
+  //   imageInfo,
+  //   setImageInfo,
+}) {
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-  console.log(apiKey);
   const URL = `https://api.giphy.com/v1/gifs/translate?api_key=${apiKey}&s=`;
 
   const [gifText, setGifText] = useState("");
 
   const handleClick = () => {
-    console.log("image url:", imgUrl);
     setImgUrl(URL + gifText);
   };
 
