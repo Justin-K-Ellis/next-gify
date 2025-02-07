@@ -70,3 +70,7 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.nav-link {
+  @apply p-1 rounded-sm hover:shadow hover:bg-secondary;
+}
